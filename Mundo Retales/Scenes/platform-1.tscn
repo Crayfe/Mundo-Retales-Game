@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://fh8iu771sxg1"]
+[gd_scene load_steps=12 format=3 uid="uid://fh8iu771sxg1"]
 
 [ext_resource type="Texture2D" uid="uid://bnqo2n0730413" path="res://Images/trees.png" id="1_jm74t"]
 [ext_resource type="Texture2D" uid="uid://tpr4obusaba3" path="res://Images/tileset_forest.png" id="2_5wucc"]
@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://p1vdqvymu5yh" path="res://Scenes/portal.tscn" id="4_ukqqx"]
 [ext_resource type="Texture2D" uid="uid://dqyacqql7ej8s" path="res://Images/tree_b.png" id="5_os33y"]
 [ext_resource type="PackedScene" uid="uid://bjoorsxq5f1o2" path="res://Scenes/Gem.tscn" id="6_b8kts"]
+[ext_resource type="Script" path="res://Scripts/CanvasLayer.gd" id="7_g6oo2"]
+[ext_resource type="Texture2D" uid="uid://ckmpbupke3wga" path="res://Images/gem.png" id="7_kw0um"]
+[ext_resource type="FontFile" uid="uid://dyc778c8yyfvq" path="res://Fonts/nokiafc22.ttf" id="8_pfov1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sxatj"]
 texture = ExtResource("2_5wucc")
@@ -127,11 +130,34 @@ sources/0 = SubResource("TileSetAtlasSource_sxatj")
 
 [node name="platform-1" type="Node2D"]
 
-[node name="Trees" type="Sprite2D" parent="."]
-show_behind_parent = true
-position = Vector2(224, -216)
-scale = Vector2(4.74023, 4.53906)
-texture = ExtResource("1_jm74t")
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+script = ExtResource("7_g6oo2")
+
+[node name="wrap" type="Label" parent="CanvasLayer"]
+offset_left = -64.0
+offset_top = -156.0
+offset_right = -58.0
+offset_bottom = -143.0
+theme_override_fonts/font = ExtResource("8_pfov1")
+theme_override_font_sizes/font_size = 8
+text = ":"
+
+[node name="totalGems" type="Label" parent="CanvasLayer/wrap"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 1.0
+offset_right = 28.0
+offset_bottom = 14.0
+theme_override_fonts/font = ExtResource("8_pfov1")
+theme_override_font_sizes/font_size = 8
+text = "000"
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/wrap"]
+position = Vector2(-10, 5)
+scale = Vector2(0.8125, 0.875)
+texture = ExtResource("7_kw0um")
+hframes = 5
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_ftikp")
@@ -150,12 +176,20 @@ scale = Vector2(2, 2)
 position = Vector2(-32, 136)
 scale = Vector2(2, 2)
 
-[node name="TreeB" type="Sprite2D" parent="."]
-position = Vector2(-88, -144)
+[node name="Trees" type="Sprite2D" parent="."]
+show_behind_parent = true
+position = Vector2(224, -216)
+scale = Vector2(4.74023, 4.53906)
+texture = ExtResource("1_jm74t")
+
+[node name="TreeB" type="Sprite2D" parent="Trees"]
+position = Vector2(-65.8196, 15.8623)
+scale = Vector2(0.21096, 0.22031)
 texture = ExtResource("5_os33y")
 
-[node name="TreeB2" type="Sprite2D" parent="."]
-position = Vector2(329, -96)
+[node name="TreeB2" type="Sprite2D" parent="Trees"]
+position = Vector2(22.1508, 26.4372)
+scale = Vector2(0.21096, 0.22031)
 texture = ExtResource("5_os33y")
 
 [node name="Gems" type="Node" parent="."]
