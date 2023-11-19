@@ -1,0 +1,70 @@
+[gd_scene load_steps=6 format=3 uid="uid://mra4n3m116cx"]
+
+[ext_resource type="Script" path="res://Scripts/main-menu.gd" id="1_2ac48"]
+[ext_resource type="AudioStream" uid="uid://01hujcqprmvo" path="res://Sounds/Fantasy_Activity_1.mp3" id="1_orfm8"]
+[ext_resource type="FontFile" uid="uid://dyc778c8yyfvq" path="res://Fonts/nokiafc22.ttf" id="3_4g7cg"]
+[ext_resource type="Texture2D" uid="uid://dj7uajkgqahaq" path="res://Images/Grass 001.png" id="3_afjsp"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2k22v"]
+font = ExtResource("3_4g7cg")
+font_size = 50
+font_color = Color(0.745098, 0.0901961, 1, 1)
+outline_size = 10
+
+[node name="main-menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2ac48")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_orfm8")
+volume_db = -10.0
+autoplay = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(413, 256)
+scale = Vector2(3.32422, 2.08594)
+texture = ExtResource("3_afjsp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -174.0
+offset_top = -49.0
+offset_right = 174.0
+offset_bottom = 49.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NombreJuego" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 40
+text = "Mundo Retales"
+label_settings = SubResource("LabelSettings_2k22v")
+horizontal_alignment = 1
+
+[node name="Play" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("3_4g7cg")
+theme_override_font_sizes/font_size = 30
+text = "Play"
+
+[node name="Exit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("3_4g7cg")
+theme_override_font_sizes/font_size = 30
+text = "Exit"
+
+[connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]

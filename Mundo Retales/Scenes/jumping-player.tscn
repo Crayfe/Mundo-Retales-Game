@@ -1,0 +1,82 @@
+[gd_scene load_steps=8 format=3 uid="uid://o4c7s0fto0jj"]
+
+[ext_resource type="Script" path="res://Scripts/jumpingPlayer.gd" id="1_7ow38"]
+[ext_resource type="Texture2D" uid="uid://be82wsge47clu" path="res://Images/AnimationSheet.png" id="2_06xoy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nav6e"]
+size = Vector2(8, 16)
+
+[sub_resource type="Animation" id="Animation_cga78"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_u2yt3"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_ktinb"]
+resource_name = "walk"
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_myv35"]
+_data = {
+"RESET": SubResource("Animation_cga78"),
+"idle": SubResource("Animation_u2yt3"),
+"walk": SubResource("Animation_ktinb")
+}
+
+[node name="jumping-player" type="CharacterBody2D"]
+script = ExtResource("1_7ow38")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_06xoy")
+hframes = 8
+vframes = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_nav6e")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_myv35")
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)

@@ -1,0 +1,69 @@
+[gd_scene load_steps=7 format=3 uid="uid://p1vdqvymu5yh"]
+
+[ext_resource type="Script" path="res://Scripts/portal.gd" id="1_11exa"]
+[ext_resource type="Texture2D" uid="uid://cucx6nwqmh6p7" path="res://Images/portal6_spritesheet.png" id="2_hu57i"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c54ad"]
+radius = 9.21954
+
+[sub_resource type="Animation" id="Animation_b3kum"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_t1uo4"]
+resource_name = "portal-activo"
+length = 2.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2, 1.6, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 6]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rrl84"]
+_data = {
+"RESET": SubResource("Animation_b3kum"),
+"portal-activo": SubResource("Animation_t1uo4")
+}
+
+[node name="portal" type="Node2D"]
+scale = Vector2(4, 4)
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("1_11exa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
+shape = SubResource("CircleShape2D_c54ad")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+texture = ExtResource("2_hu57i")
+hframes = 7
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Area2D"]
+root_node = NodePath("../Sprite2D")
+autoplay = "portal-activo"
+speed_scale = 3.0
+libraries = {
+"": SubResource("AnimationLibrary_rrl84")
+}
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
