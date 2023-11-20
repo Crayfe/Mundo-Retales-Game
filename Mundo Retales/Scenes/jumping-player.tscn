@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://o4c7s0fto0jj"]
+[gd_scene load_steps=9 format=3 uid="uid://o4c7s0fto0jj"]
 
 [ext_resource type="Script" path="res://Scripts/jumpingPlayer.gd" id="1_7ow38"]
 [ext_resource type="Texture2D" uid="uid://be82wsge47clu" path="res://Images/AnimationSheet.png" id="2_06xoy"]
+[ext_resource type="AudioStream" uid="uid://5n8vi7d0gdjf" path="res://Sounds/jump.ogg" id="3_fs44q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nav6e"]
 size = Vector2(8, 16)
@@ -78,5 +79,7 @@ libraries = {
 "": SubResource("AnimationLibrary_myv35")
 }
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(3, 3)
+[node name="playerJump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_fs44q")
+volume_db = -6.0
+pitch_scale = 0.3

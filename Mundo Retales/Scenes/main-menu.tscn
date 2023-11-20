@@ -187,10 +187,10 @@ text = "Exit"
 [node name="ColorRect" type="ColorRect" parent="."]
 modulate = Color(0, 0, 0, 0.839859)
 layout_mode = 0
-offset_left = -8.0
-offset_top = -8.0
-offset_right = 832.0
-offset_bottom = 520.0
+offset_left = -22.0
+offset_top = -21.0
+offset_right = 669.0
+offset_bottom = 531.0
 
 [node name="Transition" type="AnimationPlayer" parent="ColorRect"]
 autoplay = "fade_in"
