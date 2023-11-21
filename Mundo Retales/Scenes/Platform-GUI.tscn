@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=3 uid="uid://bpfc3nx1403vq"]
+
+[ext_resource type="Script" path="res://Scripts/CanvasLayer.gd" id="1_hjjns"]
+[ext_resource type="FontFile" uid="uid://dyc778c8yyfvq" path="res://Fonts/nokiafc22.ttf" id="2_i0lj3"]
+[ext_resource type="Texture2D" uid="uid://ckmpbupke3wga" path="res://Images/gem.png" id="3_mpexb"]
+
+[node name="Platform-GUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GUI" type="CanvasLayer" parent="."]
+process_mode = 1
+script = ExtResource("1_hjjns")
+
+[node name="Panel" type="Panel" parent="GUI"]
+offset_left = 18.0
+offset_top = 15.0
+offset_right = 96.0
+offset_bottom = 54.0
+
+[node name="wrap" type="Label" parent="GUI/Panel"]
+top_level = true
+layout_mode = 0
+offset_left = 49.0
+offset_top = 30.0
+offset_right = 77.0
+offset_bottom = 61.0
+theme_override_fonts/font = ExtResource("2_i0lj3")
+theme_override_font_sizes/font_size = 8
+text = ":"
+
+[node name="Sprite2D" type="Sprite2D" parent="GUI/Panel/wrap"]
+position = Vector2(-12, 5)
+scale = Vector2(1, 1.076)
+texture = ExtResource("3_mpexb")
+hframes = 5
+
+[node name="totalGems" type="Label" parent="GUI/Panel/wrap"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 7.0
+offset_top = -1.0
+offset_right = 34.0
+offset_bottom = 17.0
+theme_override_fonts/font = ExtResource("2_i0lj3")
+theme_override_font_sizes/font_size = 12
+text = "000"
