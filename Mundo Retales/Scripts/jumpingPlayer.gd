@@ -12,7 +12,6 @@ const GRAVITY = 180
 
 func _physics_process(delta):
 	velocity.y += GRAVITY * delta
-	var friction = false
 	if Input.is_action_pressed("ui_right"):
 		sprite.flip_h = false
 		animationPlayer.play("walk")
@@ -24,19 +23,11 @@ func _physics_process(delta):
 	else:
 		velocity.x = 0
 		animationPlayer.play("idle")
-		friction = true
 		
 	if is_on_floor():
 		if Input.is_action_pressed("ui_accept"):
 			velocity.y = JUMP_HEIGHT
 			$playerJump.play()
-		if friction == true:
-			pass
-			#velocity.x = lerp(velocity.x, 0, 0.5)
-	else:
-		if friction == true:
-			pass
-			#velocity.x = lerp(velocity.x, 0, 0.01)
 			
 	move_and_slide()
 	

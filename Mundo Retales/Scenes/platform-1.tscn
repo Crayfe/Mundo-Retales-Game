@@ -1,12 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://fh8iu771sxg1"]
+[gd_scene load_steps=12 format=3 uid="uid://fh8iu771sxg1"]
 
 [ext_resource type="Texture2D" uid="uid://bnqo2n0730413" path="res://Images/trees.png" id="1_jm74t"]
 [ext_resource type="PackedScene" uid="uid://bpfc3nx1403vq" path="res://Scenes/Platform-GUI.tscn" id="1_maq4c"]
 [ext_resource type="Texture2D" uid="uid://tpr4obusaba3" path="res://Images/tileset_forest.png" id="2_5wucc"]
-[ext_resource type="PackedScene" uid="uid://o4c7s0fto0jj" path="res://Scenes/jumping-player.tscn" id="2_kxav7"]
+[ext_resource type="PackedScene" uid="uid://o4c7s0fto0jj" path="res://Scenes/Characters/jumping-player.tscn" id="2_kxav7"]
 [ext_resource type="PackedScene" uid="uid://p1vdqvymu5yh" path="res://Scenes/portal.tscn" id="4_ukqqx"]
 [ext_resource type="Texture2D" uid="uid://dqyacqql7ej8s" path="res://Images/tree_b.png" id="5_os33y"]
 [ext_resource type="PackedScene" uid="uid://bjoorsxq5f1o2" path="res://Scenes/Gem.tscn" id="6_b8kts"]
+[ext_resource type="PackedScene" uid="uid://boi5kycg7pqd2" path="res://Scenes/Characters/anti-player.tscn" id="8_wlfu0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sxatj"]
 texture = ExtResource("2_5wucc")
@@ -194,3 +195,9 @@ position = Vector2(163, -367)
 
 [node name="Gem7" parent="Gems" instance=ExtResource("6_b8kts")]
 position = Vector2(-62, -422)
+
+[node name="anti-player" parent="." instance=ExtResource("8_wlfu0")]
+position = Vector2(158, -356)
+
+[node name="anti-player2" parent="." instance=ExtResource("8_wlfu0")]
+position = Vector2(360, -277)
