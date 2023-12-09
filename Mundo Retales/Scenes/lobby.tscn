@@ -869,7 +869,7 @@ sources/1 = SubResource("TileSetAtlasSource_4k5g1")
 [node name="Lobby" type="Node2D"]
 y_sort_enabled = true
 
-[node name="walking-player" parent="." instance=ExtResource("2_hfxxf")]
+[node name="player" parent="." instance=ExtResource("2_hfxxf")]
 position = Vector2(449, 320)
 
 [node name="portal-1" parent="." instance=ExtResource("4_1vtcb")]

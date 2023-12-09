@@ -30,5 +30,6 @@ func move_character():
 	move_and_slide()
 
 func _on_area_2d_body_entered(body):
-	if body.get_name() == "jumping-player":
+	if body.get_name() == "player":
 		print("Hit")
+		body.hit()
